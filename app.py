@@ -19,6 +19,11 @@ def hello_world():  # put application's code here
 def test():
     return "POST sent."
 
+@app.route('/poland')
+def poland():
+    dt_now_pl = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=2)))
+    return dt_now_pl
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port)
