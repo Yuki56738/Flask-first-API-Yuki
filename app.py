@@ -1,7 +1,7 @@
 import os
 import datetime
 
-from flask import Flask
+from flask import Flask, request, Response
 
 from flask_cors import CORS
 
@@ -20,10 +20,21 @@ def hello_world():  # put application's code here
 def test():
     return "POST sent."
 
+
 @app.route('/poland')
 def poland():
     dt_now_pl = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=2)))
     return str(dt_now_pl)
+
+
+@app.route('/mailrec', methods=["GET", "POST"])
+def mailrec():
+    req = request.get_data()
+    # json_dict = json.load(str(req))
+    print(req)
+    print(type(req))
+    # print(json_dict)
+    return Response(status=200)
 
 
 if __name__ == '__main__':
